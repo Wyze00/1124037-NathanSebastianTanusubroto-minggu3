@@ -1,24 +1,22 @@
-import { useEffect } from "react";
-import LoginForm from "./LoginForm";
-import { useNavigate } from "react-router";
+import { lazy } from "react";
+import { BrowserRouter, Route, Routes } from "react-router";
+import Header from "./Header";
+
+const LoginForm = lazy(() => import('./LoginForm'));
+const PostList = lazy(() => import('./PostList'));
+const PostDetail = lazy(() => import('./PostDetail'));
+const Logout = lazy(() => import('./Logout'));
 
 export default function App(): React.JSX.Element {
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if(localStorage.getItem('login') === 'true'){
-            navigate('/post');
-        }
-    }, []);
-
-    const handleLogin = () => {
-        localStorage.setItem('login', 'true');
-        navigate('/post');
-    }
-
     return (
-        <>
-            <LoginForm onLogin={handleLogin} />
-        </>
+        <BrowserRouter>
+            <Header />
+            <Routes>
+                <Route path='/' element={<LoginForm />}></Route>
+                <Route path='/post' element={<PostList />}></Route>
+                <Route path='/post/:postId' element={<PostDetail />}></Route>
+                <Route path='/logout' element={<Logout />}></Route>
+            </Routes>
+        </BrowserRouter>
     );
 }

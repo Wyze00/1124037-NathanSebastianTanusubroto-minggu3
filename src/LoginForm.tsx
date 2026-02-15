@@ -1,13 +1,11 @@
 import { Box, Button, Paper, TextField, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
-type LoginFormProps = {
-    onLogin: () => void;
-}
-
-export default function LoginForm({onLogin}: LoginFormProps): React.JSX.Element {
+export default function LoginForm(): React.JSX.Element {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const navigate = useNavigate();
 
     const handleClick: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
 
@@ -22,9 +20,16 @@ export default function LoginForm({onLogin}: LoginFormProps): React.JSX.Element 
         })
         
         if(response.status === 200){
-            onLogin();
+            localStorage.setItem('login', 'true');
+            navigate('/post');
         }
     }
+
+    useEffect(() => {
+        if(localStorage.getItem('login') === 'true'){
+            navigate('/post');
+        }
+    }, []);
 
     return (
         <div className="flex min-h-[400px] items-center justify-center p-4">
