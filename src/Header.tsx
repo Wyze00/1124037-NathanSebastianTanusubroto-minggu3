@@ -1,12 +1,10 @@
 import { AppBar, Toolbar, Typography, Button, Container } from "@mui/material";
 import { useNavigate } from "react-router";
+import { Logout as LogoutIcon } from "@mui/icons-material";
 
-type HeaderProps = {
-    isLogin: boolean;
-}
-
-export default function Header({ isLogin = false }: HeaderProps): React.JSX.Element {
+export default function Header(): React.JSX.Element {
     const navigate = useNavigate();
+    const isLogin = localStorage.getItem('login') === 'true' ? true : false; 
     
     const handleLogout = () => {
         navigate('/logout');
@@ -26,6 +24,7 @@ export default function Header({ isLogin = false }: HeaderProps): React.JSX.Elem
                                 variant="text" 
                                 color="inherit" 
                                 size="small"
+                                startIcon={<LogoutIcon />}
                                 onClick={handleLogout}
                                 className="bg-white text-black hover:bg-red-50"
                             >

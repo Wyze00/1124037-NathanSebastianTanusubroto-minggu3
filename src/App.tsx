@@ -1,27 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import LoginForm from "./LoginForm";
-import Header from "./Header";
 import { useNavigate } from "react-router";
 
 export default function App(): React.JSX.Element {
-    const [isLogin, setIsLogin] = useState<boolean>(false);
     const navigate = useNavigate();
 
     useEffect(() => {
         if(localStorage.getItem('login') === 'true'){
-            setIsLogin(true);
-            navigate('/postlist');
+            navigate('/post');
         }
-
-    }, [isLogin]);
+    }, []);
 
     const handleLogin = () => {
-        setIsLogin(true);
+        localStorage.setItem('login', 'true');
+        navigate('/post');
     }
 
     return (
         <>
-            <Header isLogin={isLogin} />
             <LoginForm onLogin={handleLogin} />
         </>
     );

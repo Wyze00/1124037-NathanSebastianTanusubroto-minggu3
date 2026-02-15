@@ -22,7 +22,6 @@ export default function LoginForm({onLogin}: LoginFormProps): React.JSX.Element 
         })
         
         if(response.status === 200){
-            localStorage.setItem('login', 'true');
             onLogin();
         }
     }
