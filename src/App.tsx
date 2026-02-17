@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router";
 import Header from "./Header";
 
 const LoginForm = lazy(() => import('./LoginForm'));
@@ -16,6 +16,7 @@ export default function App(): React.JSX.Element {
                 <Route path='/post' element={<PostList />}></Route>
                 <Route path='/post/:postId' element={<PostDetail />}></Route>
                 <Route path='/logout' element={<Logout />}></Route>
+                <Route path='*' element={<h1>404 Not Found</h1>}></Route>
             </Routes>
         </BrowserRouter>
     );

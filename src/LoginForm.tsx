@@ -7,7 +7,7 @@ export default function LoginForm(): React.JSX.Element {
     const [password, setPassword] = useState<string>('');
     const navigate = useNavigate();
 
-    const handleClick: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
+    const handleClick: React.MouseEventHandler<HTMLButtonElement> = async () => {
 
         const response = await fetch('http://localhost:5173/api/auth/login', {
             method: 'POST',
