@@ -1,10 +1,31 @@
 import { AppBar, Toolbar, Typography, Button, Container } from "@mui/material";
 import { useNavigate } from "react-router";
 import { Logout as LogoutIcon } from "@mui/icons-material";
+import { useAppSelector } from "../hooks/useAppSelector";
+import { useEffect } from "react";
+import { useAppDispatch } from "../hooks/useAppDispatch";
+import { authAction } from "../redux/authSlice";
+import type { UserInfo } from "../type/UserInfo";
 
 export default function Header(): React.JSX.Element {
     const navigate = useNavigate();
-    const isLogin = localStorage.getItem('login') === 'true' ? true : false; 
+    const isLogin = useAppSelector((state) => state.auth.userInfo); 
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+
+        const tryLogin = async () => {
+            const response = await fetch('http://localhost:5173/api/auth/me');
+
+            // Gabisa logout gegara cookienya httpOnly jadi pake localStorage
+            if(response.status === 200 && localStorage.getItem('login') == 'true'){
+                const profieData: {user: UserInfo} = await response.json();
+                dispatch(authAction.setUserInfo(profieData.user));
+            }
+        }
+
+        tryLogin();
+    }, []);
     
     const handleLogout = () => {
         navigate('/logout');

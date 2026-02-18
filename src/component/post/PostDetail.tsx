@@ -5,7 +5,7 @@ import {
     Avatar, Chip, CircularProgress, 
 } from "@mui/material";
 import { ArrowBack, CalendarMonth, Tag } from "@mui/icons-material";
-import type { Post } from "./type/Post";
+import type { Post } from "../../type/Post";
 
 export default function PostDetail(): React.JSX.Element {
     const { postId } = useParams();

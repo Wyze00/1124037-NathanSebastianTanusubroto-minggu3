@@ -8,8 +8,8 @@ import {
 import { 
     SortByAlpha, CalendarToday, Person, Search as SearchIcon, ArrowUpward, ArrowDownward 
 } from "@mui/icons-material";
-import type { GetPostResponse } from "./type/GetPostResponse";
-import type { Post } from "./type/Post";
+import type { GetPostResponse } from "../../type/GetPostResponse";
+import type { Post } from "../../type/Post";
 
 export default function PostList(): React.JSX.Element {
     const [posts, setPosts] = useState<Post[]>([]);
