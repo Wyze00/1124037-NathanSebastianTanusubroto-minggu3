@@ -1,11 +1,11 @@
 import { lazy } from "react";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router";
+import { BrowserRouter, Route, Routes } from "react-router";
 import Header from "./Header";
 
-const LoginForm = lazy(() => import('./LoginForm'));
-const PostList = lazy(() => import('./PostList'));
-const PostDetail = lazy(() => import('./PostDetail'));
-const Logout = lazy(() => import('./Logout'));
+const LoginForm = lazy(() => import('./component/account/LoginForm'));
+const PostList = lazy(() => import('./component/post/PostList'));
+const PostDetail = lazy(() => import('./component/post/PostDetail'));
+const Logout = lazy(() => import('./component/account/Logout'));
 
 export default function App(): React.JSX.Element {
     return (
