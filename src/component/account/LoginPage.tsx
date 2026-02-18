@@ -28,8 +28,8 @@ export default function LoginForm(): React.JSX.Element {
             const profile = await fetch('http://localhost:5173/api/auth/me');
 
             if(profile.status === 200){
-
                 const profileData: {user: UserInfo} = await profile.json();
+                localStorage.setItem('login', 'true');
                 dispatch(authAction.setUserInfo(profileData.user));
             }
 

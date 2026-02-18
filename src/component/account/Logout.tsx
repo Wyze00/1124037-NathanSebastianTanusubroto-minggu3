@@ -9,7 +9,8 @@ export default function Logout(): React.JSX.Element {
 
     useEffect(() => {
         dispatch(authAction.setUserInfo(undefined));
-        localStorage.setItem('login', 'true');
+        // Sementara
+        localStorage.removeItem('login');
         navigate('/', { replace: true });
     }, []);
 

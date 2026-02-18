@@ -48,48 +48,50 @@ export default function PostDetail(): React.JSX.Element {
     }
 
     return (
-        <Container maxWidth="md" className="py-10">
-            <Button 
-                startIcon={<ArrowBack />} 
-                onClick={() => navigate('/post')}
-                className="mb-6 text-slate-600 hover:text-blue-600"
-            >
-                Back to Feed
-            </Button>
+        <div className="min-h-screen">
+            <Container maxWidth="md" className="py-10">
+                <Button 
+                    startIcon={<ArrowBack />} 
+                    onClick={() => navigate('/post')}
+                    className="mb-6 text-slate-600 hover:text-blue-600"
+                >
+                    Back to Feed
+                </Button>
 
-            <Paper elevation={0} className="p-8 border border-slate-200 rounded-2xl shadow-sm">
-                <Box className="flex items-center gap-3 mb-6">
-                    <Avatar sx={{ bgcolor: 'primary.main' }}>
-                        {post.user.name.charAt(0)}
-                    </Avatar>
-                    <Box>
-                        <Typography variant="subtitle1" className="font-bold leading-none">
-                            {post.user.name}
-                        </Typography>
-                        <Typography variant="caption" color="textSecondary" className="flex items-center gap-1">
-                            <CalendarMonth sx={{ fontSize: 14 }} /> 
-                            {new Date(post.createdAt).toLocaleDateString('id-ID', { 
-                                day: 'numeric', month: 'long', year: 'numeric' 
-                            })}
-                        </Typography>
+                <Paper elevation={0} className="p-8 border border-slate-200 rounded-2xl shadow-sm">
+                    <Box className="flex items-center gap-3 mb-6">
+                        <Avatar sx={{ bgcolor: 'primary.main' }}>
+                            {post.user.name.charAt(0)}
+                        </Avatar>
+                        <Box>
+                            <Typography variant="subtitle1" className="font-bold leading-none">
+                                {post.user.name}
+                            </Typography>
+                            <Typography variant="caption" color="textSecondary" className="flex items-center gap-1">
+                                <CalendarMonth sx={{ fontSize: 14 }} /> 
+                                {new Date(post.createdAt).toLocaleDateString('id-ID', { 
+                                    day: 'numeric', month: 'long', year: 'numeric' 
+                                })}
+                            </Typography>
+                        </Box>
                     </Box>
-                </Box>
 
-                <Typography variant="h3" component="h1" className="font-extrabold mb-6 text-slate-900 leading-tight">
-                    {post.title}
-                </Typography>
+                    <Typography variant="h3" component="h1" className="font-extrabold mb-6 text-slate-900 leading-tight">
+                        {post.title}
+                    </Typography>
 
-                <Box className="flex gap-2 mb-8">
-                    <Chip label={`ID: ${post.id}`} size="small" variant="outlined" icon={<Tag sx={{ fontSize: 14 }} />} />
-                    <Chip label="Article" size="small" color="primary" variant="filled" />
-                </Box>
+                    <Box className="flex gap-2 mb-8">
+                        <Chip label={`ID: ${post.id}`} size="small" variant="outlined" icon={<Tag sx={{ fontSize: 14 }} />} />
+                        <Chip label="Article" size="small" color="primary" variant="filled" />
+                    </Box>
 
-                <Divider className="mb-8" />
+                    <Divider className="mb-8" />
 
-                <Typography variant="body1" className="text-slate-700 leading-relaxed text-lg whitespace-pre-line">
-                    {post.content || "No content available for this post."}
-                </Typography>
-            </Paper>
-        </Container>
+                    <Typography variant="body1" className="text-slate-700 leading-relaxed text-lg whitespace-pre-line">
+                        {post.content || "No content available for this post."}
+                    </Typography>
+                </Paper>
+            </Container>
+        </div>
     );
 }

@@ -54,7 +54,8 @@ export default function PostList(): React.JSX.Element {
     }, [posts, sortType, isAscending, searchString]);
 
     return (
-        <Container maxWidth="lg" className="py-8">
+        <div className="min-h-screen">
+            <Container maxWidth="lg" className="py-8">
             <Paper elevation={0} className="p-6 mb-8 border border-slate-200 bg-slate-50/50 rounded-xl">
                 <Typography variant="h4" className="font-bold mb-6 text-slate-800">
                     Explore Posts
@@ -149,6 +150,7 @@ export default function PostList(): React.JSX.Element {
                     <Typography color="textSecondary">No posts found matching your criteria.</Typography>
                 </Box>
             )}
-        </Container>
+            </Container>
+        </div>
     );
 }
